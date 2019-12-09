@@ -44,9 +44,9 @@ TagManager:
   - name: Environment Base
     uniqueID: 4274633795
     locked: 0
-  - name: Environment Adornment
-    uniqueID: 1202657051
-    locked: 0
   - name: Character
     uniqueID: 1890241649
+    locked: 0
+  - name: Environment Adornment
+    uniqueID: 1202657051
     locked: 0
