@@ -6,7 +6,13 @@ public class Camera : MonoBehaviour
 {
     public GameObject follow_target;
     private Vector3 target_position;
+
     private float move_speed = 5;
+
+    private double furthest_left = -17.5;
+    private double furthest_right = 35.6;
+    private double furthest_top = 17.8;
+    private double furthest_bottom = -17.3;
 
     void Update()
     {

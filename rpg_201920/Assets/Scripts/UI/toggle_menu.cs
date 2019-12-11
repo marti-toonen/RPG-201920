@@ -5,20 +5,14 @@ using UnityEngine.UI;
 
 public class toggle_menu : MonoBehaviour
 {
-    private bool journal_open = false;
-
-    public Button journal_button;
-
-    public GameObject journal_menu;
+    public Animator animator;
 
     public void toggle_journal() {
-        if(!journal_open) {
-            journal_menu.SetActive(true);
-            journal_open = true;
+        if(animator.GetBool("journal_open")) {
+            animator.SetBool("journal_open", false);
         }
         else {
-            journal_menu.SetActive(false);
-            journal_open = false;
+            animator.SetBool("journal_open", true);
         }
     }
 }
