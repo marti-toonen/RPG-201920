@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class dialogue_manager : MonoBehaviour
 {
     private GameObject deputy_bubble;
-    private GameObject sign01_bubble;
+    private GameObject young_bubble;
 
     public Text name_text;
     public Text dialogue_text;
@@ -19,7 +19,7 @@ public class dialogue_manager : MonoBehaviour
         sentences = new Queue<string>();
 
         deputy_bubble = GameObject.Find("exclamation_deputy");
-        sign01_bubble = GameObject.Find("information_sign01");
+        young_bubble = GameObject.Find("frustrated_young");
     }
 
     public void start_dialogue(dialogue_class dialogue) {
@@ -30,11 +30,10 @@ public class dialogue_manager : MonoBehaviour
             case "Deputy":
                 deputy_bubble.SetActive(false);
                 break;
-            case "WELCOME":
-                sign01_bubble.SetActive(false);
+            case "Young Gun":
+                young_bubble.SetActive(false);
                 break;
             default:
-                Debug.Log("You're not supposed to be here!");
                 break;
         }
 

@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private float move_speed = 5;
+    private float move_speed = 7;
 
     private Animator animator;
     private Rigidbody2D player_rigidbody;
+
+    private Vector2 move_input;
 
     void Start() {
         animator = GetComponent<Animator>();
@@ -16,10 +18,12 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetAxis("Horizontal") > 0.5f || Input.GetAxis("Horizontal") <= 0.5f)
-            player_rigidbody.velocity = new Vector2(Input.GetAxis("Horizontal") * move_speed, player_rigidbody.velocity.y);
-        if(Input.GetAxis("Vertical") > 0.5f || Input.GetAxis("Vertical") <= 0.5f)
-            player_rigidbody.velocity = new Vector2(player_rigidbody.velocity.x, Input.GetAxis("Vertical") * move_speed);
+        move_input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+
+        if(move_input != Vector2.zero)
+            player_rigidbody.velocity = new Vector2(move_input.x * move_speed, move_input.y * move_speed);
+        else
+            player_rigidbody.velocity = Vector2.zero;
 
         animator.SetFloat("move_x", Input.GetAxis("Horizontal"));
         animator.SetFloat("move_y", Input.GetAxis("Vertical"));

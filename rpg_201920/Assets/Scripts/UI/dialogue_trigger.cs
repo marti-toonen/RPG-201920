@@ -9,4 +9,8 @@ public class dialogue_trigger : MonoBehaviour
     void OnMouseDown() {
         FindObjectOfType<dialogue_manager>().start_dialogue(dialogue);
     }
+
+    void OnTriggerEnter2D() {
+        FindObjectOfType<dialogue_manager>().start_dialogue(dialogue);
+    }
 }
