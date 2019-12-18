@@ -9,8 +9,12 @@ public class journal_manager : MonoBehaviour
 
     private Queue<string> journal_entries;
 
+    void Start() {
+        journal_entries = new Queue<string>();
+    }
+
     public void add_journal(base_journal journal) {
-        foreach(string entry in journal_entries) {
+        foreach(string entry in journal.journal_entry) {
             journal_entries.Enqueue(entry);
         }
 

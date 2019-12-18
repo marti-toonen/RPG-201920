@@ -9,4 +9,11 @@ public class dialogue_class
 
     [TextArea(3, 10)]
     public string[] sentences;
+
+    [TextArea(3, 10)]
+    public string persuade_text;
+    [TextArea(3, 10)]
+    public string intimidate_text;
+    [TextArea(3, 10)]
+    public string investigate_text;
 }
