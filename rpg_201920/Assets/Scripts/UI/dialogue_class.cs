@@ -11,9 +11,5 @@ public class dialogue_class
     public string[] sentences;
 
     [TextArea(3, 10)]
-    public string persuade_text;
-    [TextArea(3, 10)]
-    public string intimidate_text;
-    [TextArea(3, 10)]
-    public string investigate_text;
+    public string[] dialogue_options;
 }

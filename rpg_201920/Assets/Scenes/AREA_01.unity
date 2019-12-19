@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.392}
+  m_Color: {r: 0.48235294, g: 0.23921569, b: 0.06666667, a: 0.392}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -436,7 +436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -449,7 +449,7 @@ MonoBehaviour:
     m_MinSize: 10
     m_MaxSize: 30
     m_Alignment: 4
-    m_AlignByGeometry: 0
+    m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -609,7 +609,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &144961226
 MonoBehaviour:
@@ -667,12 +667,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.48235294, g: 0.23921569, b: 0.06666667, a: 0.4392157}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -731,6 +731,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator_choicebox: {fileID: 989195575}
+  dialogue:
+    npc_name: The Highwayman
+    sentences:
+    - Nice try, Sheriff.
+    dialogue_options: []
+  continue_button: {fileID: 800871376}
+  dialogue_text: {fileID: 1321824008}
 --- !u!1 &156944050
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,7 +897,7 @@ Transform:
   m_Children:
   - {fileID: 287768425}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &178626576
 BoxCollider2D:
@@ -1005,7 +1012,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Nancy Drew
+  m_Text: '[Investigation] Nancy Drew'
 --- !u!222 &187609966
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1249,9 +1256,7 @@ MonoBehaviour:
     sentences:
     - This leads into the desert.
     - Nothing ever returns from that wide, flat waste.
-    persuade_text: 
-    intimidate_text: 
-    investigate_text: 
+    dialogue_options: []
 --- !u!1 &287516580
 GameObject:
   m_ObjectHideFlags: 0
@@ -1606,6 +1611,7 @@ GameObject:
   m_Component:
   - component: {fileID: 376876279}
   - component: {fileID: 376876278}
+  - component: {fileID: 376876280}
   m_Layer: 0
   m_Name: Highwayman
   m_TagString: Untagged
@@ -1676,8 +1682,26 @@ Transform:
   m_Children:
   - {fileID: 576085681}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &376876280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376876277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eddd370bd3588d42953abf49eec6853, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  persuasion:
+    base_value: 7
+  intimidation:
+    base_value: 7
+  intuition:
+    base_value: 7
 --- !u!1 &383305062
 GameObject:
   m_ObjectHideFlags: 0
@@ -1798,9 +1822,7 @@ MonoBehaviour:
     sentences:
     - Welcome, stranger, to Boot Gulch!
     - It has been ZERO days since our last murder.
-    persuade_text: 
-    intimidate_text: 
-    investigate_text: 
+    dialogue_options: []
 --- !u!61 &383305067
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2045,12 +2067,159 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.509491, y: -4.920002, z: -10}
+  m_LocalPosition: {x: 7.631813, y: -4.920002, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &561640529
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 561640530}
+  - component: {fileID: 561640534}
+  - component: {fileID: 561640533}
+  - component: {fileID: 561640532}
+  - component: {fileID: 561640531}
+  m_Layer: 0
+  m_Name: information_deputy01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &561640530
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561640529}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.41, y: 4.41, z: 3.8611784}
+  m_LocalScale: {x: 7, y: 7, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1231223658}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &561640531
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561640529}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.16, y: 0.16}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.16, y: 0.16}
+  m_EdgeRadius: 0
+--- !u!114 &561640532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561640529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4336139d820afad4393b3f4ac18d2919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    npc_name: Deputy
+    sentences:
+    - The Highwayman won't talk, huh?
+    - Maybe The Young Gun will have something that can help.
+    dialogue_options: []
+--- !u!95 &561640533
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561640529}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6574f8812c52fae4b9ec79219865564c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!212 &561640534
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561640529}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 1890241649
+  m_SortingLayer: 2
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 1940992594153191806, guid: a9999d6465349a947aac0dba6622b28e,
+    type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.16, y: 0.16}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &572065765
 GameObject:
   m_ObjectHideFlags: 3
@@ -2186,7 +2355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2199,7 +2368,7 @@ MonoBehaviour:
     m_MinSize: 10
     m_MaxSize: 30
     m_Alignment: 4
-    m_AlignByGeometry: 0
+    m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -2367,9 +2536,7 @@ MonoBehaviour:
     - '...'
     - I wasn't, though.
     - Heard he was stabbed, anyway.
-    persuade_text: 
-    intimidate_text: 
-    investigate_text: 
+    dialogue_options: []
 --- !u!212 &579286263
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2513,9 +2680,10 @@ MonoBehaviour:
     - I'm the Highwayman.
     - I make ends meet, just like any man.
     - And I don't have anything to say to you, Sheriff.
-    persuade_text: I'm just here to talk.
-    intimidate_text: You better sing for me, Highwayman.
-    investigate_text: You look nervous, Highwayman...
+    dialogue_options:
+    - '[Persuade] I''m just here to talk.'
+    - '[Intimidate] You best start singing.'
+    - '[Investigate] You look nervous...'
 --- !u!95 &590436832
 Animator:
   serializedVersion: 3
@@ -2686,9 +2854,7 @@ MonoBehaviour:
     sentences:
     - This leads into the desert.
     - Nothing ever returns from that wide, flat waste.
-    persuade_text: 
-    intimidate_text: 
-    investigate_text: 
+    dialogue_options: []
 --- !u!1 &703209610
 GameObject:
   m_ObjectHideFlags: 0
@@ -2782,7 +2948,7 @@ RectTransform:
   m_Children:
   - {fileID: 1759496292}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2973,7 +3139,7 @@ RectTransform:
   - {fileID: 2093410562}
   - {fileID: 899862462}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3136,7 +3302,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &800871373
 GameObject:
@@ -3190,8 +3356,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03bad55fcf7f84c4d93902ec79ebe60a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  opponent: {fileID: 0}
+  deputy_highway_bubble: {fileID: 561640529}
+  young_highway_bubble: {fileID: 1927174530}
   name_text: {fileID: 1577632729}
   dialogue_text: {fileID: 1321824008}
   persuade_button: {fileID: 1456139888}
@@ -3200,6 +3366,10 @@ MonoBehaviour:
   continue_button: {fileID: 800871376}
   animator_textbox: {fileID: 1137625634}
   animator_choicebox: {fileID: 989195575}
+  can_manipulate: 0
+  player_persuasion: 0
+  player_intimidation: 0
+  player_intuition: 0
 --- !u!114 &800871376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3224,7 +3394,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.1254902}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -3340,7 +3510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3353,7 +3523,7 @@ MonoBehaviour:
     m_MinSize: 10
     m_MaxSize: 30
     m_Alignment: 4
-    m_AlignByGeometry: 0
+    m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -3442,9 +3612,7 @@ MonoBehaviour:
     sentences:
     - This leads towards town.
     - Reckon you should solve the murder before you face the townsfolk.
-    persuade_text: 
-    intimidate_text: 
-    investigate_text: 
+    dialogue_options: []
 --- !u!1 &858778176
 GameObject:
   m_ObjectHideFlags: 0
@@ -3509,7 +3677,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &897151136
 GameObject:
@@ -3650,9 +3818,9 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 30
   m_ChildAlignment: 7
-  m_Spacing: -70
+  m_Spacing: 10
   m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
@@ -3809,7 +3977,7 @@ RectTransform:
   m_Children:
   - {fileID: 96523696}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3864,7 +4032,7 @@ Transform:
   - {fileID: 2037271891}
   - {fileID: 1508144513}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &911564090
 GameObject:
@@ -3946,7 +4114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.49803922}
+  m_Color: {r: 0.48235294, g: 0.23921569, b: 0.06666667, a: 0.49803922}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3990,7 +4158,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0.6}
+    m_HighlightedColor: {r: 0.48235294, g: 0.23921569, b: 0.06666667, a: 0.6}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -4088,8 +4256,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03bad55fcf7f84c4d93902ec79ebe60a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  opponent: {fileID: 0}
+  deputy_highway_bubble: {fileID: 561640529}
+  young_highway_bubble: {fileID: 1927174530}
   name_text: {fileID: 1577632729}
   dialogue_text: {fileID: 1321824008}
   persuade_button: {fileID: 1456139888}
@@ -4098,6 +4266,10 @@ MonoBehaviour:
   continue_button: {fileID: 800871376}
   animator_textbox: {fileID: 1137625634}
   animator_choicebox: {fileID: 989195575}
+  can_manipulate: 0
+  player_persuasion: 0
+  player_intimidation: 0
+  player_intuition: 0
 --- !u!4 &948271209
 Transform:
   m_ObjectHideFlags: 0
@@ -4110,7 +4282,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &961349880
 GameObject:
@@ -4175,7 +4347,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0.6}
+    m_HighlightedColor: {r: 0.48235294, g: 0.23921569, b: 0.06666667, a: 0.6}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -4265,7 +4437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.49803922}
+  m_Color: {r: 0.48235294, g: 0.23921569, b: 0.06666667, a: 0.49803922}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4423,7 +4595,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 989195570}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4436,7 +4608,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 767, y: 0}
+  m_SizeDelta: {x: 700, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &989195572
 MonoBehaviour:
@@ -4455,13 +4627,13 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 4
-  m_Spacing: 0
+  m_ChildAlignment: 7
+  m_Spacing: 50
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
+  m_ChildScaleWidth: 1
   m_ChildScaleHeight: 0
 --- !u!114 &989195573
 MonoBehaviour:
@@ -4599,7 +4771,7 @@ Transform:
   m_Children:
   - {fileID: 238068192}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1008560947
 BoxCollider2D:
@@ -5052,8 +5224,10 @@ Transform:
   - {fileID: 383305065}
   - {fileID: 579286260}
   - {fileID: 590436830}
+  - {fileID: 561640530}
+  - {fileID: 1927174531}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1321824006
 GameObject:
@@ -5307,7 +5481,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: The Iron Fist
+  m_Text: '[Intimidation] The Iron Fist'
 --- !u!222 &1395215632
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5437,9 +5611,7 @@ MonoBehaviour:
     - Sheriff, the banker's been murdered!
     - You should talk to folks around town to see what happened.
     - If someone tells you something important, it'll be added to your journal.
-    persuade_text: 
-    intimidate_text: 
-    investigate_text: 
+    dialogue_options: []
 --- !u!61 &1419318920
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5582,7 +5754,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1456139888
 MonoBehaviour:
@@ -5640,12 +5812,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.48235294, g: 0.23921569, b: 0.06666667, a: 0.4392157}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5704,6 +5876,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator_choicebox: {fileID: 989195575}
+  dialogue:
+    npc_name: The Highwayman
+    sentences:
+    - Nice try, Sherrif.
+    dialogue_options: []
+  continue_button: {fileID: 800871376}
+  dialogue_text: {fileID: 1321824008}
 --- !u!1 &1465972237
 GameObject:
   m_ObjectHideFlags: 0
@@ -5789,7 +5968,7 @@ Transform:
   m_Children:
   - {fileID: 897151137}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1465972240
 MonoBehaviour:
@@ -6247,7 +6426,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1534652288
 MonoBehaviour:
@@ -6305,12 +6484,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.48235294, g: 0.23921569, b: 0.06666667, a: 0.4392157}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6369,6 +6548,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator_choicebox: {fileID: 989195575}
+  dialogue:
+    npc_name: 
+    sentences: []
+    dialogue_options: []
+  continue_button: {fileID: 800871376}
+  dialogue_text: {fileID: 1321824008}
 --- !u!1 &1577632727
 GameObject:
   m_ObjectHideFlags: 0
@@ -6621,7 +6806,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.392}
+  m_Color: {r: 0.48235294, g: 0.23921569, b: 0.06666667, a: 0.392}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -6753,9 +6938,7 @@ MonoBehaviour:
     sentences:
     - This leads into the desert.
     - Nothing ever returns from that wide, flat waste.
-    persuade_text: 
-    intimidate_text: 
-    investigate_text: 
+    dialogue_options: []
 --- !u!1 &1878216583
 GameObject:
   m_ObjectHideFlags: 0
@@ -6824,7 +7007,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: The Diplomat
+  m_Text: '[Persuasion] The Diplomat'
 --- !u!222 &1878216587
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6833,6 +7016,155 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1878216583}
   m_CullTransparentMesh: 0
+--- !u!1 &1927174530
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1927174531}
+  - component: {fileID: 1927174534}
+  - component: {fileID: 1927174533}
+  - component: {fileID: 1927174532}
+  - component: {fileID: 1927174535}
+  m_Layer: 0
+  m_Name: information_young01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1927174531
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927174530}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -22.943882, y: 24.174675, z: 5.109375}
+  m_LocalScale: {x: 7, y: 7, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1231223658}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1927174532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927174530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4336139d820afad4393b3f4ac18d2919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    npc_name: Young Gun
+    sentences:
+    - Oh, howdy again Sheriff.
+    - The Deputy said I could help you with the Highwayman?
+    - H'mm... here, try this!
+    - The Snakeoil Salesman said this would make it easier to talk to folks!
+    dialogue_options: []
+--- !u!95 &1927174533
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927174530}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 345c3c07ce7906449818ab9f6a509b72, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!212 &1927174534
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927174530}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 1890241649
+  m_SortingLayer: 2
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -1735674275677870485, guid: a9999d6465349a947aac0dba6622b28e,
+    type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.16, y: 0.16}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!61 &1927174535
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927174530}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.16, y: 0.16}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.16, y: 0.16}
+  m_EdgeRadius: 0
 --- !u!1 &1930794067
 GameObject:
   m_ObjectHideFlags: 0
@@ -7279,7 +7611,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0.6}
+    m_HighlightedColor: {r: 0.48235294, g: 0.23921569, b: 0.06666667, a: 0.6}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -7369,7 +7701,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.49803922}
+  m_Color: {r: 0.48235294, g: 0.23921569, b: 0.06666667, a: 0.49803922}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -8019,7 +8351,7 @@ PrefabInstance:
     - target: {fileID: 7241873155076885553, guid: eba2bc9bb3934194c99e96b6185d184c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7241873155076885553, guid: eba2bc9bb3934194c99e96b6185d184c,
         type: 3}

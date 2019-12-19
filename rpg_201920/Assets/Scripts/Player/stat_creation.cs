@@ -11,21 +11,21 @@ public class stat_creation : character_stats
     public void OnClicked(Button button) {
         switch(button.name) {
             case "Diplomat":
-                persuasion.base_value = 5;
-                intimidation.base_value = 3;
-                intuition.base_value = 3;
+                GameObject.Find("Player").GetComponent<character_stats>().persuasion.base_value = 5;
+                GameObject.Find("Player").GetComponent<character_stats>().intimidation.base_value = 3;
+                GameObject.Find("Player").GetComponent<character_stats>().intuition.base_value = 3;
                 stat_screen.SetActive(false);
                 break;
             case "Iron Fist":
-                persuasion.base_value = 3;
-                intimidation.base_value = 5;
-                intuition.base_value = 3;
+                GameObject.Find("Player").GetComponent<character_stats>().persuasion.base_value = 3;
+                GameObject.Find("Player").GetComponent<character_stats>().intimidation.base_value = 5;
+                GameObject.Find("Player").GetComponent<character_stats>().intuition.base_value = 3;
                 stat_screen.SetActive(false);
                 break;
             case "Nancy Drew":
-                persuasion.base_value = 3;
-                intimidation.base_value = 3;
-                intuition.base_value = 5;
+                GameObject.Find("Player").GetComponent<character_stats>().persuasion.base_value = 3;
+                GameObject.Find("Player").GetComponent<character_stats>().intimidation.base_value = 3;
+                GameObject.Find("Player").GetComponent<character_stats>().intuition.base_value = 5;
                 stat_screen.SetActive(false);
                 break;
             default:
