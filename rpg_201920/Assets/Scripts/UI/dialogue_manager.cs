@@ -7,7 +7,6 @@ public class dialogue_manager : MonoBehaviour
 {
     private GameObject deputy_bubble;
     private GameObject young_bubble;
-    private GameObject highway_bubble;
 
     public GameObject deputy_highway_bubble;
     public GameObject young_highway_bubble;
@@ -26,37 +25,23 @@ public class dialogue_manager : MonoBehaviour
 
     public Queue<string> sentences;
 
-    public bool can_manipulate = false;
+    public bool can_manipulate_highway = false;
 
-    public int player_persuasion;
-    public int player_intimidation;
-    public int player_intuition;
+    private int player_persuasion;
+    private int player_intimidation;
+    private int player_intuition;
 
     void Start() {
         sentences = new Queue<string>();
 
         deputy_bubble = GameObject.Find("exclamation_deputy");
         young_bubble = GameObject.Find("frustrated_young");
-        highway_bubble = GameObject.Find("hesitant_outlaw");
     }
 
     void Update() {
         player_persuasion = GameObject.Find("Player").GetComponent<character_stats>().persuasion.base_value;
         player_intimidation = GameObject.Find("Player").GetComponent<character_stats>().intimidation.base_value;
         player_intuition = GameObject.Find("Player").GetComponent<character_stats>().intuition.base_value;
-
-        // young gun
-
-        if(!young_bubble.activeSelf && !deputy_highway_bubble.activeSelf)
-            young_highway_bubble.SetActive(true);
-
-        // deputy
-
-        if(deputy_highway_bubble.activeSelf) {
-            deputy_highway_bubble.SetActive(false);
-            if(!young_bubble.activeSelf)
-                young_highway_bubble.SetActive(true);
-        }
     }
 
     public void start_dialogue(dialogue_class dialogue) {
@@ -73,16 +58,24 @@ public class dialogue_manager : MonoBehaviour
 
         switch(dialogue.npc_name) {
             case "Deputy":
-                deputy_bubble.SetActive(false);
+                if(deputy_bubble.activeSelf)
+                    deputy_bubble.SetActive(false);
+                else if(deputy_highway_bubble.activeSelf && !young_bubble.activeSelf) {
+                    deputy_highway_bubble.SetActive(false);
+                    young_highway_bubble.SetActive(true);
+                }
                 break;
             case "Young Gun":
-                young_bubble.SetActive(false);
-                if(young_highway_bubble.activeSelf) {
-                    if(player_persuasion > player_intimidation && player_persuasion > player_intuition)
+                if(young_bubble.activeSelf)
+                    young_bubble.SetActive(false);
+
+
+                else if(young_highway_bubble.activeSelf) {
+                    if(player_persuasion == 5)
                         GameObject.Find("Player").GetComponent<character_stats>().persuasion.base_value += 3;
-                    else if(player_intimidation > player_persuasion && player_intimidation > player_intuition)
+                    else if(player_intimidation == 5)
                         GameObject.Find("Player").GetComponent<character_stats>().intimidation.base_value += 3;
-                    else if(player_intuition > player_persuasion && player_intuition > player_intimidation)
+                    else if(player_intuition == 5)
                         GameObject.Find("Player").GetComponent<character_stats>().intuition.base_value += 3;
                     else
                         Debug.Log("Oh Ariana, we're really in it now.");
@@ -92,9 +85,9 @@ public class dialogue_manager : MonoBehaviour
                 break;
             case "The Highwayman":
                 int highwayman_persuasion = GameObject.Find("Highwayman").GetComponent<character_stats>().persuasion.base_value;
+
                 if(player_persuasion > highwayman_persuasion) {
-                    can_manipulate = true;
-                    highway_bubble.SetActive(false);
+                    can_manipulate_highway = true;
                 }
                 else {
                     if(!deputy_bubble.activeSelf)
@@ -115,7 +108,7 @@ public class dialogue_manager : MonoBehaviour
     }
 
     public void display_next() {
-        if(sentences.Count == 0 && can_manipulate) {
+        if(sentences.Count == 0 && can_manipulate_highway) {
             animator_choicebox.SetBool("choicebox_open", true);
             continue_button.interactable = false;
         }
