@@ -85,9 +85,11 @@ public class dialogue_manager : MonoBehaviour
                 break;
             case "The Highwayman":
                 int highwayman_persuasion = GameObject.Find("Highwayman").GetComponent<character_stats>().persuasion.base_value;
+                int highwayman_intimidation = GameObject.Find("Highwayman").GetComponent<character_stats>().intimidation.base_value;
+                int highwayman_intuition = GameObject.Find("Highwayman").GetComponent<character_stats>().intuition.base_value;
 
-                if(player_persuasion > highwayman_persuasion) {
-                    can_manipulate_highway = true;
+                if(player_persuasion > highwayman_persuasion || player_intimidation > highwayman_intimidation || player_intuition > highwayman_intuition) {
+                    GameObject.Find("Highwayman").GetComponent<character_stats>().can_manipulate = true;
                 }
                 else {
                     if(!deputy_bubble.activeSelf)
@@ -108,7 +110,7 @@ public class dialogue_manager : MonoBehaviour
     }
 
     public void display_next() {
-        if(sentences.Count == 0 && can_manipulate_highway) {
+        if(sentences.Count == 0 && GameObject.Find("Highwayman").GetComponent<character_stats>().can_manipulate && !GameObject.Find("Highwayman").GetComponent<character_stats>().information_gained) {
             animator_choicebox.SetBool("choicebox_open", true);
             continue_button.interactable = false;
         }

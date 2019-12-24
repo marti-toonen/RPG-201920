@@ -11,8 +11,9 @@ public class dialogue_choice : MonoBehaviour
     public dialogue_class success_dialogue;
 
     public Button continue_button;
-    private Text npc_name;
+
     private GameObject highway_bubble;
+    public GameObject widow_button;
 
     void Start() {
         highway_bubble = GameObject.Find("hesitant_outlaw");
@@ -21,14 +22,13 @@ public class dialogue_choice : MonoBehaviour
     void dialogue_react(Button button) {
         switch(button.name) {
             case "Persuade":
-                if(GameObject.Find("continue_button").GetComponent<dialogue_manager>().can_manipulate_highway == true) {
+                if(GameObject.Find("Highwayman").GetComponent<character_stats>().can_manipulate) {
                     FindObjectOfType<dialogue_manager>().start_dialogue(success_dialogue);
-                    GameObject.Find("dialogue_manager").GetComponent<dialogue_manager>().can_manipulate_highway = false;
-                    GameObject.Find("information_widow").SetActive(true);
+                    GameObject.Find("Highwayman").GetComponent<character_stats>().information_gained = true;
+                    widow_button.SetActive(true);
                 }
                 else {
                     FindObjectOfType<dialogue_manager>().start_dialogue(failure_dialogue);
-                    GameObject.Find("dialogue_manager").GetComponent<dialogue_manager>().can_manipulate_highway = false;
                 }
 
                 if(highway_bubble.activeSelf)
@@ -38,42 +38,38 @@ public class dialogue_choice : MonoBehaviour
                 animator_choicebox.SetBool("choicebox_open", false);
                 break;
             case "Intimidate":
-                animator_choicebox.SetBool("choicebox_open", false);
-
-                if(GameObject.Find("dialogue_manager").GetComponent<dialogue_manager>().can_manipulate_highway) {
+                if(GameObject.Find("Highwayman").GetComponent<character_stats>().can_manipulate) {
                     FindObjectOfType<dialogue_manager>().start_dialogue(success_dialogue);
-                    GameObject.Find("dialogue_manager").GetComponent<dialogue_manager>().can_manipulate_highway = false;
-                    GameObject.Find("information_widow").SetActive(true);
+                    GameObject.Find("Highwayman").GetComponent<character_stats>().information_gained = true;
+                    widow_button.SetActive(true);
                 }
 
                 else {
                     FindObjectOfType<dialogue_manager>().start_dialogue(failure_dialogue);
-                    GameObject.Find("dialogue_manager").GetComponent<dialogue_manager>().can_manipulate_highway = false;
                 }
 
                 if(highway_bubble.activeSelf)
                     highway_bubble.SetActive(false);
 
                 continue_button.interactable = true;
+                animator_choicebox.SetBool("choicebox_open", false);
                 break;
             case "Investigate":
-                animator_choicebox.SetBool("choicebox_open", false);
-
-                if(GameObject.Find("dialogue_manager").GetComponent<dialogue_manager>().can_manipulate_highway) {
+                if(GameObject.Find("Highwayman").GetComponent<character_stats>().can_manipulate) {
                     FindObjectOfType<dialogue_manager>().start_dialogue(success_dialogue);
-                    GameObject.Find("dialogue_manager").GetComponent<dialogue_manager>().can_manipulate_highway = false;
-                    GameObject.Find("information_widow").SetActive(true);
+                    GameObject.Find("Highwayman").GetComponent<character_stats>().information_gained = true;
+                    widow_button.SetActive(true);
                 }
 
                 else {
                     FindObjectOfType<dialogue_manager>().start_dialogue(failure_dialogue);
-                    GameObject.Find("dialogue_manager").GetComponent<dialogue_manager>().can_manipulate_highway = false;
                 }
 
                 if(highway_bubble.activeSelf)
                     highway_bubble.SetActive(false);
 
                 continue_button.interactable = true;
+                animator_choicebox.SetBool("choicebox_open", false);
                 break;
             default:
                 Debug.Log("Here We Aren't.");

@@ -855,6 +855,7 @@ MonoBehaviour:
     - You oughta speak to The Widower.
     dialogue_options: []
   continue_button: {fileID: 800871376}
+  widow_button: {fileID: 579249123}
 --- !u!1 &156944050
 GameObject:
   m_ObjectHideFlags: 0
@@ -1820,6 +1821,8 @@ MonoBehaviour:
     base_value: 7
   intuition:
     base_value: 7
+  can_manipulate: 0
+  information_gained: 0
 --- !u!61 &376876281
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2619,6 +2622,7 @@ GameObject:
   - component: {fileID: 579249127}
   - component: {fileID: 579249126}
   - component: {fileID: 579249125}
+  - component: {fileID: 579249129}
   m_Layer: 0
   m_Name: information_widow01
   m_TagString: Untagged
@@ -2656,6 +2660,10 @@ MonoBehaviour:
     npc_name: The Widower
     sentences:
     - Did that no good Highwayman send you to me?
+    - Yes, the Banker foreclosed on my farm.
+    - That doesn't mean I killed him!
+    - I recall he was taking medication from The Snakeoil Salesman.
+    - Maybe you should ask him what happened!
     dialogue_options: []
 --- !u!61 &579249126
 BoxCollider2D:
@@ -2752,6 +2760,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &579249129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 579249123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d373d4e3c2d46041ab668a94da2ddf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  journal:
+    journal_entry:
+    - The Banker foreclosed on The Widow's farm before he was killed.
 --- !u!1 &579286259
 GameObject:
   m_ObjectHideFlags: 0
@@ -4485,6 +4508,8 @@ MonoBehaviour:
     base_value: 3
   intuition:
     base_value: 3
+  can_manipulate: 0
+  information_gained: 0
   stat_screen: {fileID: 901796187}
 --- !u!114 &911564097
 MonoBehaviour:
@@ -4682,6 +4707,8 @@ MonoBehaviour:
     base_value: 3
   intuition:
     base_value: 3
+  can_manipulate: 0
+  information_gained: 0
   stat_screen: {fileID: 901796187}
 --- !u!114 &961349884
 MonoBehaviour:
@@ -6256,6 +6283,7 @@ MonoBehaviour:
     - You oughta speak with the Widower.
     dialogue_options: []
   continue_button: {fileID: 800871376}
+  widow_button: {fileID: 579249123}
 --- !u!1 &1465972237
 GameObject:
   m_ObjectHideFlags: 0
@@ -6439,6 +6467,8 @@ MonoBehaviour:
     base_value: 3
   intuition:
     base_value: 3
+  can_manipulate: 0
+  information_gained: 0
 --- !u!1 &1486492793
 GameObject:
   m_ObjectHideFlags: 0
@@ -6936,6 +6966,7 @@ MonoBehaviour:
     - So you oughta speak with The Widower.
     dialogue_options: []
   continue_button: {fileID: 800871376}
+  widow_button: {fileID: 579249123}
 --- !u!1 &1577632727
 GameObject:
   m_ObjectHideFlags: 0
@@ -8044,6 +8075,8 @@ MonoBehaviour:
     base_value: 3
   intuition:
     base_value: 3
+  can_manipulate: 0
+  information_gained: 0
   stat_screen: {fileID: 901796187}
 --- !u!114 &2018589464
 MonoBehaviour:
