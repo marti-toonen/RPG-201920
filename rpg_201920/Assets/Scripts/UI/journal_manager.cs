@@ -7,18 +7,13 @@ public class journal_manager : MonoBehaviour
 {
     public Text journal_text;
 
-    private Queue<string> journal_entries;
-
-    void Start() {
-        journal_entries = new Queue<string>();
-    }
+    private List<string> journal_entries;
 
     public void add_journal(base_journal journal) {
-        foreach(string entry in journal.journal_entry) {
-            journal_entries.Enqueue(entry);
-        }
+        journal_entries.Add(journal.journal_entry.ToString());
 
-        string journal_entry = journal_entries.Dequeue();
-        journal_text.text = journal_entry;
+        for(int i = 0; i < journal_entries.Count; i++) {
+            journal_text.text = journal_entries[i] + "\n";
+        }
     }
 }
