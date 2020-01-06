@@ -20,10 +20,14 @@ public class Player : MonoBehaviour
     {
         move_input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
 
-        if(move_input != Vector2.zero)
+        if(move_input != Vector2.zero) {
             player_rigidbody.velocity = new Vector2(move_input.x * move_speed, move_input.y * move_speed);
-        else
+            animator.SetBool("is_moving", true);
+        }
+        else {
             player_rigidbody.velocity = Vector2.zero;
+            animator.SetBool("is_moving", false);
+        }
 
         animator.SetFloat("move_x", Input.GetAxis("Horizontal"));
         animator.SetFloat("move_y", Input.GetAxis("Vertical"));
