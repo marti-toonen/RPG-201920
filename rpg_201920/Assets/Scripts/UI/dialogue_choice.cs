@@ -16,7 +16,7 @@ public class dialogue_choice : MonoBehaviour
     public GameObject widow_button;
 
     void Start() {
-        highway_bubble = GameObject.Find("hesitant_outlaw");
+        highway_bubble = GameObject.Find("information_highway01");
     }
 
     void dialogue_react(Button button) {
@@ -26,6 +26,7 @@ public class dialogue_choice : MonoBehaviour
                     FindObjectOfType<dialogue_manager>().start_dialogue(success_dialogue);
                     GameObject.Find("Highwayman").GetComponent<character_stats>().information_gained = true;
                     widow_button.SetActive(true);
+                    GameObject.Find("Player").GetComponent<character_stats>().persuasion.base_value += 1;
                 }
                 else {
                     FindObjectOfType<dialogue_manager>().start_dialogue(failure_dialogue);
@@ -42,6 +43,7 @@ public class dialogue_choice : MonoBehaviour
                     FindObjectOfType<dialogue_manager>().start_dialogue(success_dialogue);
                     GameObject.Find("Highwayman").GetComponent<character_stats>().information_gained = true;
                     widow_button.SetActive(true);
+                    GameObject.Find("Player").GetComponent<character_stats>().intimidation.base_value += 1;
                 }
 
                 else {
@@ -59,6 +61,7 @@ public class dialogue_choice : MonoBehaviour
                     FindObjectOfType<dialogue_manager>().start_dialogue(success_dialogue);
                     GameObject.Find("Highwayman").GetComponent<character_stats>().information_gained = true;
                     widow_button.SetActive(true);
+                    GameObject.Find("Player").GetComponent<character_stats>().intuition.base_value += 1;
                 }
 
                 else {

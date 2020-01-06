@@ -7,9 +7,13 @@ public class dialogue_manager : MonoBehaviour
 {
     private GameObject deputy_bubble;
     private GameObject young_bubble;
+    private GameObject widow_bubble;
+    public GameObject snake_bubble;
 
     public GameObject deputy_highway_bubble;
     public GameObject young_highway_bubble;
+
+    private Player player;
 
     public Text name_text;
     public Text dialogue_text;
@@ -34,19 +38,25 @@ public class dialogue_manager : MonoBehaviour
     void Start() {
         sentences = new Queue<string>();
 
-        deputy_bubble = GameObject.Find("exclamation_deputy");
-        young_bubble = GameObject.Find("frustrated_young");
+        deputy_bubble = GameObject.Find("information_deputy01");
+        young_bubble = GameObject.Find("information_young01");
+
+        player = FindObjectOfType<Player>();
     }
 
     void Update() {
         player_persuasion = GameObject.Find("Player").GetComponent<character_stats>().persuasion.base_value;
         player_intimidation = GameObject.Find("Player").GetComponent<character_stats>().intimidation.base_value;
         player_intuition = GameObject.Find("Player").GetComponent<character_stats>().intuition.base_value;
+
+        widow_bubble = GameObject.Find("information_widow01");
     }
 
     public void start_dialogue(dialogue_class dialogue) {
-        if(!animator_textbox.GetBool("textbox_open"))
+        if(!animator_textbox.GetBool("textbox_open")) {
             animator_textbox.SetBool("textbox_open", true);
+            player.can_move = false;
+        }
 
         if(dialogue.dialogue_options.Length != 0) {
             persuade_button.GetComponentInChildren<Text>().text = dialogue.dialogue_options[0];
@@ -96,6 +106,12 @@ public class dialogue_manager : MonoBehaviour
                         deputy_highway_bubble.SetActive(true);
                 }
                 break;
+            case "The Widower":
+                if(widow_bubble.activeSelf) {
+                    widow_bubble.SetActive(false);
+                    snake_bubble.SetActive(true);
+                }
+                break;
             default:
                 break;
         }
@@ -116,6 +132,7 @@ public class dialogue_manager : MonoBehaviour
         }
         else if(sentences.Count == 0) {
             animator_textbox.SetBool("textbox_open", false);
+            player.can_move = true;
             return;
         }
         else {
