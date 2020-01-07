@@ -7,11 +7,15 @@ public class dialogue_manager : MonoBehaviour
 {
     private GameObject deputy_bubble;
     private GameObject young_bubble;
-    private GameObject widow_bubble;
+    private GameObject highway_bubble;
+
+    public GameObject widow_bubble;
     public GameObject snake_bubble;
 
     public GameObject deputy_highway_bubble;
     public GameObject young_highway_bubble;
+    public GameObject deputy_snake_bubble;
+    public GameObject widow_snake_bubble;
 
     private Player player;
 
@@ -29,17 +33,19 @@ public class dialogue_manager : MonoBehaviour
 
     public Queue<string> sentences;
 
-    public bool can_manipulate_highway = false;
-
     private int player_persuasion;
     private int player_intimidation;
     private int player_intuition;
+
+    private int highway_interact = 0;
+    private int snake_interact = 0;
 
     void Start() {
         sentences = new Queue<string>();
 
         deputy_bubble = GameObject.Find("information_deputy01");
         young_bubble = GameObject.Find("information_young01");
+        highway_bubble = GameObject.Find("information_highway01");
 
         player = FindObjectOfType<Player>();
     }
@@ -48,8 +54,6 @@ public class dialogue_manager : MonoBehaviour
         player_persuasion = GameObject.Find("Player").GetComponent<character_stats>().persuasion.base_value;
         player_intimidation = GameObject.Find("Player").GetComponent<character_stats>().intimidation.base_value;
         player_intuition = GameObject.Find("Player").GetComponent<character_stats>().intuition.base_value;
-
-        widow_bubble = GameObject.Find("information_widow01");
     }
 
     public void start_dialogue(dialogue_class dialogue) {
@@ -67,26 +71,34 @@ public class dialogue_manager : MonoBehaviour
         name_text.text = dialogue.npc_name;
 
         switch(dialogue.npc_name) {
-            case "Deputy":
+            case "The Deputy":
                 if(deputy_bubble.activeSelf)
                     deputy_bubble.SetActive(false);
                 else if(deputy_highway_bubble.activeSelf && !young_bubble.activeSelf) {
                     deputy_highway_bubble.SetActive(false);
                     young_highway_bubble.SetActive(true);
                 }
+                else if(deputy_snake_bubble.activeSelf) {
+                    deputy_snake_bubble.SetActive(false);
+                    widow_snake_bubble.SetActive(true);
+                }
                 break;
-            case "Young Gun":
+            case "The Young Gun":
                 if(young_bubble.activeSelf)
                     young_bubble.SetActive(false);
-
-
                 else if(young_highway_bubble.activeSelf) {
-                    if(player_persuasion == 5)
+                    if(player_persuasion > player_intimidation && player_persuasion > player_intuition) {
                         GameObject.Find("Player").GetComponent<character_stats>().persuasion.base_value += 3;
-                    else if(player_intimidation == 5)
+                        GameObject.Find("Highwayman").GetComponent<character_stats>().can_manipulate = true;
+                    }
+                    else if(player_intimidation > player_persuasion && player_intimidation > player_intuition) {
                         GameObject.Find("Player").GetComponent<character_stats>().intimidation.base_value += 3;
-                    else if(player_intuition == 5)
+                        GameObject.Find("Highwayman").GetComponent<character_stats>().can_manipulate = true;
+                    }
+                    else if(player_intuition > player_persuasion && player_intuition > player_intimidation) {
                         GameObject.Find("Player").GetComponent<character_stats>().intuition.base_value += 3;
+                        GameObject.Find("Highwayman").GetComponent<character_stats>().can_manipulate = true;
+                    }
                     else
                         Debug.Log("Oh Ariana, we're really in it now.");
 
@@ -94,23 +106,49 @@ public class dialogue_manager : MonoBehaviour
                 }
                 break;
             case "The Highwayman":
-                int highwayman_persuasion = GameObject.Find("Highwayman").GetComponent<character_stats>().persuasion.base_value;
-                int highwayman_intimidation = GameObject.Find("Highwayman").GetComponent<character_stats>().intimidation.base_value;
-                int highwayman_intuition = GameObject.Find("Highwayman").GetComponent<character_stats>().intuition.base_value;
-
-                if(player_persuasion > highwayman_persuasion || player_intimidation > highwayman_intimidation || player_intuition > highwayman_intuition) {
-                    GameObject.Find("Highwayman").GetComponent<character_stats>().can_manipulate = true;
-                }
-                else {
+                highway_interact++;
+                if(highway_interact == 1) {
                     if(!deputy_bubble.activeSelf)
                         deputy_highway_bubble.SetActive(true);
+                    else
+                        highway_interact = 0;
                 }
+                else if(highway_interact > 1 && GameObject.Find("Highwayman").GetComponent<character_stats>().can_manipulate)
+                    highway_bubble.SetActive(false);
                 break;
             case "The Widower":
                 if(widow_bubble.activeSelf) {
                     widow_bubble.SetActive(false);
                     snake_bubble.SetActive(true);
                 }
+                else if(widow_snake_bubble.activeSelf) {
+                    if(player_persuasion > player_intimidation && player_persuasion > player_intuition) {
+                        GameObject.Find("Player").GetComponent<character_stats>().persuasion.base_value += 3;
+                        GameObject.Find("Snakeoil Salesman").GetComponent<character_stats>().can_manipulate = true;
+                    }
+                    else if(player_intimidation > player_persuasion && player_intimidation > player_intuition) {
+                        GameObject.Find("Player").GetComponent<character_stats>().intimidation.base_value += 3;
+                        GameObject.Find("Snakeoil Salesman").GetComponent<character_stats>().can_manipulate = true;
+                    }
+                    else if(player_intuition > player_persuasion && player_intuition > player_intimidation) {
+                        GameObject.Find("Player").GetComponent<character_stats>().intuition.base_value += 3;
+                        GameObject.Find("Snakeoil Salesman").GetComponent<character_stats>().can_manipulate = true;
+                    }
+                    else
+                        Debug.Log("Oh Ariana, we're really in it now.");
+                    widow_snake_bubble.SetActive(false);
+                }
+                break;
+            case "The Snakeoil Salesman":
+                snake_interact++;
+                if(snake_interact == 1) {
+                    if(!deputy_snake_bubble.activeSelf)
+                        deputy_snake_bubble.SetActive(true);
+                    else
+                        snake_interact = 0;
+                }
+                else if(snake_interact > 1 && GameObject.Find("Snakeoil Salesman").GetComponent<character_stats>().can_manipulate)
+                    snake_bubble.SetActive(false);
                 break;
             default:
                 break;
@@ -126,7 +164,11 @@ public class dialogue_manager : MonoBehaviour
     }
 
     public void display_next() {
-        if(sentences.Count == 0 && GameObject.Find("Highwayman").GetComponent<character_stats>().can_manipulate && !GameObject.Find("Highwayman").GetComponent<character_stats>().information_gained) {
+        if(sentences.Count == 0 && GameObject.Find("Highwayman").GetComponent<character_stats>().can_manipulate && !GameObject.Find("Highwayman").GetComponent<character_stats>().information_gained && !highway_bubble.activeSelf) {
+            animator_choicebox.SetBool("choicebox_open", true);
+            continue_button.interactable = false;
+        }
+        else if(sentences.Count == 0 && GameObject.Find("Snakeoil Salesman").GetComponent<character_stats>().can_manipulate && !GameObject.Find("Snakeoil Salesman").GetComponent<character_stats>().information_gained && !snake_bubble.activeSelf) {
             animator_choicebox.SetBool("choicebox_open", true);
             continue_button.interactable = false;
         }

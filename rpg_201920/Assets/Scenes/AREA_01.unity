@@ -693,6 +693,7 @@ GameObject:
   - component: {fileID: 144961226}
   - component: {fileID: 144961230}
   - component: {fileID: 144961229}
+  - component: {fileID: 144961231}
   m_Layer: 12
   m_Name: Intimidate
   m_TagString: Untagged
@@ -841,21 +842,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator_choicebox: {fileID: 989195575}
   failure_dialogue:
-    npc_name: The Highwayman
-    sentences:
-    - Nice try, Sheriff.
+    npc_name: 
+    sentences: []
     dialogue_options: []
   success_dialogue:
-    npc_name: The Highwayman
-    sentences:
-    - All right, settle down Sheriff!
-    - Now I was gunna keep this to myself...
-    - '...but I won''t hang for pity.'
-    - Before he was killed, The Banker foreclosed on The Widower's farm.
-    - You oughta speak to The Widower.
+    npc_name: 
+    sentences: []
     dialogue_options: []
   continue_button: {fileID: 800871376}
   widow_button: {fileID: 579249123}
+--- !u!114 &144961231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144961224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.6320754, g: 0.19379672, b: 0.19379672, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 0
 --- !u!1 &156944050
 GameObject:
   m_ObjectHideFlags: 0
@@ -1650,6 +1660,7 @@ GameObject:
   - component: {fileID: 317831164}
   - component: {fileID: 317831163}
   - component: {fileID: 317831162}
+  - component: {fileID: 317831165}
   m_Layer: 0
   m_Name: Snakeoil Salesman
   m_TagString: Untagged
@@ -1748,6 +1759,176 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &317831165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317831161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eddd370bd3588d42953abf49eec6853, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  persuasion:
+    base_value: 10
+  intimidation:
+    base_value: 10
+  intuition:
+    base_value: 10
+  can_manipulate: 0
+  information_gained: 0
+--- !u!1 &335556862
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 335556863}
+  - component: {fileID: 335556867}
+  - component: {fileID: 335556866}
+  - component: {fileID: 335556865}
+  - component: {fileID: 335556864}
+  m_Layer: 5
+  m_Name: information_widow02
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &335556863
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335556862}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 19.53, y: -4.08, z: 5.109375}
+  m_LocalScale: {x: 7, y: 7, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1231223658}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &335556864
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335556862}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.16, y: 0.16}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.16, y: 0.16}
+  m_EdgeRadius: 0
+--- !u!95 &335556865
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335556862}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1b0fc1015694eb1439ca76233c707906, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &335556866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335556862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4336139d820afad4393b3f4ac18d2919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    npc_name: The Widower
+    sentences:
+    - That rat won't tell you what The Banker was taking?!
+    - Why I oughta...
+    - '...'
+    - Here. I've got evidence that The Salesman's cures are phony.
+    - This should get him talking.
+    dialogue_options: []
+--- !u!212 &335556867
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335556862}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: -20333501
+  m_SortingLayer: 1
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -7025989592092767129, guid: a9999d6465349a947aac0dba6622b28e,
+    type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.16, y: 0.16}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &375208013
 GameObject:
   m_ObjectHideFlags: 0
@@ -2212,6 +2393,154 @@ Transform:
   m_Father: {fileID: 909803409}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &500238067
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 500238072}
+  - component: {fileID: 500238071}
+  - component: {fileID: 500238070}
+  - component: {fileID: 500238069}
+  - component: {fileID: 500238068}
+  m_Layer: 5
+  m_Name: information_deputy03
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!61 &500238068
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500238067}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.16, y: 0.16}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.16, y: 0.16}
+  m_EdgeRadius: 0
+--- !u!114 &500238069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500238067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4336139d820afad4393b3f4ac18d2919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    npc_name: The Deputy
+    sentences:
+    - That Snakeoil Salesman giving you trouble?
+    - Talk to The Widower again, I'd say. No one in this town hates him more than
+      her.
+    dialogue_options: []
+--- !u!95 &500238070
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500238067}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6574f8812c52fae4b9ec79219865564c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!212 &500238071
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500238067}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: -20333501
+  m_SortingLayer: 1
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 1940992594153191806, guid: a9999d6465349a947aac0dba6622b28e,
+    type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.16, y: 0.16}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &500238072
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500238067}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.41, y: 4.41, z: 3.8611784}
+  m_LocalScale: {x: 7, y: 7, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1231223658}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2402,7 +2731,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    npc_name: Deputy
+    npc_name: The Deputy
     sentences:
     - The Highwayman won't talk, huh?
     - Maybe The Young Gun will have something that can help.
@@ -2769,7 +3098,7 @@ MonoBehaviour:
     npc_name: The Widower
     sentences:
     - Did that no good Highwayman send you to me?
-    - Yes, the Banker foreclosed on my farm.
+    - Yes, The Banker foreclosed on my farm.
     - That doesn't mean I killed him!
     - I recall he was taking medication from The Snakeoil Salesman.
     - Maybe you should ask him what happened!
@@ -2951,9 +3280,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    npc_name: Young Gun
+    npc_name: The Young Gun
     sentences:
-    - I can't believe someone killed the banker !!
+    - I can't believe someone killed The Banker !!
     - Why if I'd been there...
     - '...'
     - I wasn't, though.
@@ -3103,9 +3432,9 @@ MonoBehaviour:
     - I make ends meet, just like any man.
     - And I don't have anything to say to you, Sheriff.
     dialogue_options:
-    - '[Persuade] I''m just here to talk.'
-    - '[Intimidate] You best start singing.'
-    - '[Investigate] You look nervous...'
+    - I'm just here to talk.
+    - You best start singing.
+    - You look nervous...
 --- !u!95 &590436832
 Animator:
   serializedVersion: 3
@@ -4072,9 +4401,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03bad55fcf7f84c4d93902ec79ebe60a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  widow_bubble: {fileID: 579249123}
   snake_bubble: {fileID: 1661058835}
   deputy_highway_bubble: {fileID: 561640529}
   young_highway_bubble: {fileID: 1927174530}
+  deputy_snake_bubble: {fileID: 500238067}
+  widow_snake_bubble: {fileID: 335556862}
   name_text: {fileID: 1577632729}
   dialogue_text: {fileID: 1321824008}
   persuade_button: {fileID: 1456139888}
@@ -4083,7 +4415,6 @@ MonoBehaviour:
   continue_button: {fileID: 800871376}
   animator_textbox: {fileID: 1137625634}
   animator_choicebox: {fileID: 989195575}
-  can_manipulate_highway: 0
 --- !u!114 &800871376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4886,6 +5217,7 @@ GameObject:
   - component: {fileID: 911564096}
   - component: {fileID: 911564095}
   - component: {fileID: 911564097}
+  - component: {fileID: 911564098}
   m_Layer: 12
   m_Name: Diplomat
   m_TagString: Untagged
@@ -5066,6 +5398,21 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &911564098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911564090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.44705883, g: 0.64705884, b: 0.78431374, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 0
 --- !u!1 &947976119
 GameObject:
   m_ObjectHideFlags: 0
@@ -5175,9 +5522,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03bad55fcf7f84c4d93902ec79ebe60a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  widow_bubble: {fileID: 0}
   snake_bubble: {fileID: 0}
   deputy_highway_bubble: {fileID: 561640529}
   young_highway_bubble: {fileID: 1927174530}
+  deputy_snake_bubble: {fileID: 0}
+  widow_snake_bubble: {fileID: 0}
   name_text: {fileID: 1577632729}
   dialogue_text: {fileID: 1321824008}
   persuade_button: {fileID: 1456139888}
@@ -5186,7 +5536,6 @@ MonoBehaviour:
   continue_button: {fileID: 800871376}
   animator_textbox: {fileID: 1137625634}
   animator_choicebox: {fileID: 989195575}
-  can_manipulate_highway: 0
 --- !u!4 &948271209
 Transform:
   m_ObjectHideFlags: 0
@@ -5216,6 +5565,7 @@ GameObject:
   - component: {fileID: 961349883}
   - component: {fileID: 961349882}
   - component: {fileID: 961349887}
+  - component: {fileID: 961349888}
   m_Layer: 12
   m_Name: Nancy Drew
   m_TagString: Untagged
@@ -5407,6 +5757,21 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &961349888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961349880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.41491634, g: 0.7924528, b: 0.41491634, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 0
 --- !u!1 &964877656
 GameObject:
   m_ObjectHideFlags: 0
@@ -6522,6 +6887,8 @@ Transform:
   - {fileID: 1661058836}
   - {fileID: 561640530}
   - {fileID: 2087258480}
+  - {fileID: 335556863}
+  - {fileID: 500238072}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7276,9 +7643,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    npc_name: Deputy
+    npc_name: The Deputy
     sentences:
-    - Sheriff, the banker's been murdered!
+    - Sheriff, The Banker's been murdered!
     - You should talk to folks around town to see what happened.
     - If someone tells you something important, it'll be added to your journal.
     dialogue_options: []
@@ -7399,6 +7766,7 @@ GameObject:
   - component: {fileID: 1456139888}
   - component: {fileID: 1456139892}
   - component: {fileID: 1456139891}
+  - component: {fileID: 1456139893}
   m_Layer: 12
   m_Name: Persuade
   m_TagString: Untagged
@@ -7547,21 +7915,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator_choicebox: {fileID: 989195575}
   failure_dialogue:
-    npc_name: The Highwayman
-    sentences:
-    - Nice try, sheriff.
+    npc_name: 
+    sentences: []
     dialogue_options: []
   success_dialogue:
-    npc_name: The Highwayman
-    sentences:
-    - H'mm... all right Sheriff.
-    - Didn't want to say anything as I have pity for her situation...
-    - '... but not enough to get hanged for her.'
-    - Just before he died, The Banker foreclosed on The Widower's farm.
-    - You oughta speak with the Widower.
+    npc_name: 
+    sentences: []
     dialogue_options: []
   continue_button: {fileID: 800871376}
   widow_button: {fileID: 579249123}
+--- !u!114 &1456139893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1456139886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.44691172, g: 0.6467728, b: 0.7830189, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 0
 --- !u!1 &1465972237
 GameObject:
   m_ObjectHideFlags: 0
@@ -8083,6 +8460,7 @@ GameObject:
   - component: {fileID: 1534652288}
   - component: {fileID: 1534652292}
   - component: {fileID: 1534652291}
+  - component: {fileID: 1534652293}
   m_Layer: 12
   m_Name: Investigate
   m_TagString: Untagged
@@ -8231,21 +8609,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator_choicebox: {fileID: 989195575}
   failure_dialogue:
-    npc_name: The Highwayman
-    sentences:
-    - Nice try, Sheriff.
+    npc_name: 
+    sentences: []
     dialogue_options: []
   success_dialogue:
-    npc_name: The Highwayman
-    sentences:
-    - I wouldn't go that far, but something is weighing on my mind...
-    - Now I was keeping this to myself out of pity...
-    - '...but I won''t hang for pity.'
-    - Before he died, The Banker foreclosed on The Widower's farm.
-    - So you oughta speak with The Widower.
+    npc_name: 
+    sentences: []
     dialogue_options: []
   continue_button: {fileID: 800871376}
   widow_button: {fileID: 579249123}
+--- !u!114 &1534652293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534652286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.41568628, g: 0.7921569, b: 0.41568628, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 0
 --- !u!1 &1577632727
 GameObject:
   m_ObjectHideFlags: 0
@@ -8469,17 +8856,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    npc_name: Snakeoil Salesman
+    npc_name: The Snakeoil Salesman
     sentences:
     - You say The Widower sent you?
-    - Well of course he was taking one of my miracle cures.
+    - Well of course The Banker was taking one of my miracle cures.
     - Everyone in town has sampled them! What was he taking, you ask?
     - '...'
     - Well surely I can't say, for privacy's sake.
     dialogue_options:
-    - Surely it couldn't hurt now.
-    - Listen here, fraud...
-    - Your "cures" smell like paint thinner.
+    - Would you call yourself "trustworthy"?
+    - Your "medicine" is fraudulent!
+    - I have some evidence here...
 --- !u!61 &1661058839
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9194,7 +9581,7 @@ GameObject:
   - component: {fileID: 1927174532}
   - component: {fileID: 1927174535}
   m_Layer: 5
-  m_Name: information_young01
+  m_Name: information_young02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9227,7 +9614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    npc_name: Young Gun
+    npc_name: The Young Gun
     sentences:
     - Oh, howdy again Sheriff.
     - The Deputy said I could help you with the Highwayman?
@@ -9808,6 +10195,7 @@ GameObject:
   - component: {fileID: 2018589463}
   - component: {fileID: 2018589462}
   - component: {fileID: 2018589467}
+  - component: {fileID: 2018589468}
   m_Layer: 12
   m_Name: Iron Fist
   m_TagString: Untagged
@@ -9999,6 +10387,21 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &2018589468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018589460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.63529414, g: 0.19607843, b: 0.19607843, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 0
 --- !u!1 &2037271888
 GameObject:
   m_ObjectHideFlags: 0
