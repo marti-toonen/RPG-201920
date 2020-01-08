@@ -849,7 +849,9 @@ MonoBehaviour:
     npc_name: 
     sentences: []
     dialogue_options: []
+  snake_trigger: {fileID: 0}
   continue_button: {fileID: 800871376}
+  snake_bubble: {fileID: 1661058835}
   widow_button: {fileID: 579249123}
 --- !u!114 &144961231
 MonoBehaviour:
@@ -1810,7 +1812,7 @@ Transform:
   m_LocalPosition: {x: 19.53, y: -4.08, z: 5.109375}
   m_LocalScale: {x: 7, y: 7, z: 1}
   m_Children: []
-  m_Father: {fileID: 1231223658}
+  m_Father: {fileID: 1231223659}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &335556864
@@ -2239,7 +2241,7 @@ Transform:
   m_LocalPosition: {x: 3.51, y: -2.15, z: 3.8611784}
   m_LocalScale: {x: 7, y: 7, z: 1}
   m_Children: []
-  m_Father: {fileID: 1231223658}
+  m_Father: {fileID: 1231223659}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &383305066
@@ -2538,7 +2540,7 @@ Transform:
   m_LocalPosition: {x: -1.41, y: 4.41, z: 3.8611784}
   m_LocalScale: {x: 7, y: 7, z: 1}
   m_Children: []
-  m_Father: {fileID: 1231223658}
+  m_Father: {fileID: 1231223659}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
@@ -2652,7 +2654,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.7549877, y: -4.920002, z: -10}
+  m_LocalPosition: {x: 8.248814, y: -4.920002, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2689,7 +2691,7 @@ Transform:
   m_LocalPosition: {x: -1.41, y: 4.41, z: 3.8611784}
   m_LocalScale: {x: 7, y: 7, z: 1}
   m_Children: []
-  m_Father: {fileID: 1231223658}
+  m_Father: {fileID: 1231223659}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &561640531
@@ -3079,7 +3081,7 @@ Transform:
   m_LocalPosition: {x: 19.570072, y: -4.0853252, z: 5.109375}
   m_LocalScale: {x: 7, y: 7, z: 1}
   m_Children: []
-  m_Father: {fileID: 1231223658}
+  m_Father: {fileID: 1231223659}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &579249125
@@ -3210,9 +3212,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d373d4e3c2d46041ab668a94da2ddf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  journal:
-    journal_entry:
-    - The Banker foreclosed on The Widow's farm before he was killed.
+  young_clue:
+    journal_entry: []
+  widow_clue:
+    journal_entry: []
+  snake_clue:
+    journal_entry: []
 --- !u!1 &579286259
 GameObject:
   m_ObjectHideFlags: 0
@@ -3222,10 +3227,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 579286260}
-  - component: {fileID: 579286263}
-  - component: {fileID: 579286262}
+  - component: {fileID: 579286268}
   - component: {fileID: 579286261}
+  - component: {fileID: 579286263}
   - component: {fileID: 579286264}
+  - component: {fileID: 579286262}
   - component: {fileID: 579286265}
   m_Layer: 5
   m_Name: information_young01
@@ -3234,20 +3240,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &579286260
-Transform:
+--- !u!224 &579286260
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 579286259}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -22.91, y: 24.22, z: 5.109375}
+  m_LocalPosition: {x: 0, y: 0, z: 5.109375}
   m_LocalScale: {x: 7, y: 7, z: 1}
   m_Children: []
-  m_Father: {fileID: 1231223658}
+  m_Father: {fileID: 1231223659}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -22.91, y: 24.22}
+  m_SizeDelta: {x: 0.16, y: 0.16}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &579286261
 Animator:
   serializedVersion: 3
@@ -3376,9 +3387,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d373d4e3c2d46041ab668a94da2ddf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  journal:
-    journal_entry:
-    - The Young Gun heard that the banker was stabbed.
+  young_clue:
+    journal_entry: []
+  widow_clue:
+    journal_entry: []
+  snake_clue:
+    journal_entry: []
+--- !u!222 &579286268
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 579286259}
+  m_CullTransparentMesh: 0
 --- !u!1 &590436829
 GameObject:
   m_ObjectHideFlags: 0
@@ -3410,7 +3432,7 @@ Transform:
   m_LocalPosition: {x: 3.5463152, y: 21.64, z: 5.109375}
   m_LocalScale: {x: 7, y: 7, z: 1}
   m_Children: []
-  m_Father: {fileID: 1231223658}
+  m_Father: {fileID: 1231223659}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &590436831
@@ -4401,6 +4423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03bad55fcf7f84c4d93902ec79ebe60a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  widow_trigger: {fileID: 0}
   widow_bubble: {fileID: 579249123}
   snake_bubble: {fileID: 1661058835}
   deputy_highway_bubble: {fileID: 561640529}
@@ -5522,12 +5545,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03bad55fcf7f84c4d93902ec79ebe60a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  widow_bubble: {fileID: 0}
-  snake_bubble: {fileID: 0}
+  widow_trigger: {fileID: 0}
+  widow_bubble: {fileID: 579249123}
+  snake_bubble: {fileID: 1661058835}
   deputy_highway_bubble: {fileID: 561640529}
   young_highway_bubble: {fileID: 1927174530}
-  deputy_snake_bubble: {fileID: 0}
-  widow_snake_bubble: {fileID: 0}
+  deputy_snake_bubble: {fileID: 561640529}
+  widow_snake_bubble: {fileID: 335556862}
   name_text: {fileID: 1577632729}
   dialogue_text: {fileID: 1321824008}
   persuade_button: {fileID: 1456139888}
@@ -5985,6 +6009,7 @@ GameObject:
   - component: {fileID: 1008560946}
   - component: {fileID: 1008560945}
   - component: {fileID: 1008560947}
+  - component: {fileID: 1008560948}
   m_Layer: 0
   m_Name: Young Gun
   m_TagString: Untagged
@@ -6049,8 +6074,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1008560944}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.94, y: 15.909847, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -13.939999, y: 15.909853, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children:
   - {fileID: 238068192}
@@ -6083,6 +6108,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.12, y: 0.16}
   m_EdgeRadius: 0
+--- !u!114 &1008560948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008560944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eddd370bd3588d42953abf49eec6853, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  persuasion:
+    base_value: 0
+  intimidation:
+    base_value: 0
+  intuition:
+    base_value: 0
+  can_manipulate: 0
+  information_gained: 0
 --- !u!1 &1043900313
 GameObject:
   m_ObjectHideFlags: 0
@@ -6859,6 +6904,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+  - component: {fileID: 1231223659}
   - component: {fileID: 1231223658}
   m_Layer: 5
   m_Name: Dialogue Prompts
@@ -6867,15 +6913,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1231223658
-Transform:
+--- !u!223 &1231223658
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231223657}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: -20333501
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!224 &1231223659
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1231223657}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.973881, y: -6.684675, z: -5.109375}
+  m_LocalPosition: {x: 0, y: 0, z: -5.109375}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1419318916}
@@ -6890,8 +6957,13 @@ Transform:
   - {fileID: 335556863}
   - {fileID: 500238072}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 8.973881, y: -6.684675}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1293410011
 GameObject:
   m_ObjectHideFlags: 0
@@ -7558,7 +7630,7 @@ Transform:
   m_LocalPosition: {x: -1.43, y: 4.43, z: 5.109375}
   m_LocalScale: {x: 7, y: 7, z: 1}
   m_Children: []
-  m_Father: {fileID: 1231223658}
+  m_Father: {fileID: 1231223659}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1419318917
@@ -7648,6 +7720,8 @@ MonoBehaviour:
     - Sheriff, The Banker's been murdered!
     - You should talk to folks around town to see what happened.
     - If someone tells you something important, it'll be added to your journal.
+    - Oh, and if anyone gives you any trouble come see me.
+    - I know the townsfolk pretty well.
     dialogue_options: []
 --- !u!61 &1419318920
 BoxCollider2D:
@@ -7922,7 +7996,9 @@ MonoBehaviour:
     npc_name: 
     sentences: []
     dialogue_options: []
+  snake_trigger: {fileID: 0}
   continue_button: {fileID: 800871376}
+  snake_bubble: {fileID: 1661058835}
   widow_button: {fileID: 579249123}
 --- !u!114 &1456139893
 MonoBehaviour:
@@ -8616,7 +8692,9 @@ MonoBehaviour:
     npc_name: 
     sentences: []
     dialogue_options: []
+  snake_trigger: {fileID: 0}
   continue_button: {fileID: 800871376}
+  snake_bubble: {fileID: 1661058835}
   widow_button: {fileID: 579249123}
 --- !u!114 &1534652293
 MonoBehaviour:
@@ -8803,6 +8881,8 @@ GameObject:
   - component: {fileID: 1661058839}
   - component: {fileID: 1661058838}
   - component: {fileID: 1661058837}
+  - component: {fileID: 1661058842}
+  - component: {fileID: 1661058841}
   m_Layer: 0
   m_Name: information_snake01
   m_TagString: Untagged
@@ -8821,7 +8901,7 @@ Transform:
   m_LocalPosition: {x: -11.2, y: 13.09, z: 5.109375}
   m_LocalScale: {x: 7, y: 7, z: 1}
   m_Children: []
-  m_Father: {fileID: 1231223658}
+  m_Father: {fileID: 1231223659}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1661058837
@@ -8942,6 +9022,67 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1661058841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661058835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d373d4e3c2d46041ab668a94da2ddf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  young_clue:
+    journal_entry: []
+  widow_clue:
+    journal_entry: []
+  snake_clue:
+    journal_entry: []
+--- !u!114 &1661058842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661058835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 0}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1749345777
 GameObject:
   m_ObjectHideFlags: 0
@@ -9171,9 +9312,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d373d4e3c2d46041ab668a94da2ddf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  journal:
-    journal_entry:
-    - The Young Gun heard that the banker was stabbed.
+  young_clue:
+    journal_entry: []
+  widow_clue:
+    journal_entry: []
+  snake_clue:
+    journal_entry: []
 --- !u!1 &1789269209
 GameObject:
   m_ObjectHideFlags: 0
@@ -9598,7 +9742,7 @@ Transform:
   m_LocalPosition: {x: -22.943882, y: 24.174675, z: 5.109375}
   m_LocalScale: {x: 7, y: 7, z: 1}
   m_Children: []
-  m_Father: {fileID: 1231223658}
+  m_Father: {fileID: 1231223659}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1927174532
@@ -10731,7 +10875,7 @@ Transform:
   m_LocalPosition: {x: -14.82, y: 13.69, z: 3.8611784}
   m_LocalScale: {x: 7, y: 7, z: 1}
   m_Children: []
-  m_Father: {fileID: 1231223658}
+  m_Father: {fileID: 1231223659}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &2087258481
@@ -11148,7 +11292,7 @@ PrefabInstance:
     - target: {fileID: 7241873155076885553, guid: eba2bc9bb3934194c99e96b6185d184c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7241873155076885553, guid: eba2bc9bb3934194c99e96b6185d184c,
         type: 3}

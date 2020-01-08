@@ -10,11 +10,13 @@ public class dialogue_choice : MonoBehaviour
     public dialogue_class failure_dialogue;
     public dialogue_class success_dialogue;
 
+    public journal_trigger snake_trigger;
+
     public Button continue_button;
 
     private GameObject highway_bubble;
-    private GameObject snake_bubble;
 
+    public GameObject snake_bubble;
     public GameObject widow_button;
 
     private Player player;
@@ -34,7 +36,6 @@ public class dialogue_choice : MonoBehaviour
     void Start() {
         player = FindObjectOfType<Player>();
         highway_bubble = GameObject.Find("information_highway01");
-        snake_bubble = GameObject.Find("information_snake01");
 
         highwayman_persuasion = GameObject.Find("Highwayman").GetComponent<character_stats>().persuasion.base_value;
         highwayman_intimidation = GameObject.Find("Highwayman").GetComponent<character_stats>().intimidation.base_value;
@@ -49,6 +50,9 @@ public class dialogue_choice : MonoBehaviour
         player_persuasion = GameObject.Find("Player").GetComponent<character_stats>().persuasion.base_value;
         player_intimidation = GameObject.Find("Player").GetComponent<character_stats>().intimidation.base_value;
         player_intuition = GameObject.Find("Player").GetComponent<character_stats>().intuition.base_value;
+
+        if(snake_bubble.activeSelf)
+            snake_trigger = GameObject.Find("information_snake01").GetComponent<journal_trigger>();
     }
 
     void dialogue_react(Button button) {
@@ -98,6 +102,8 @@ public class dialogue_choice : MonoBehaviour
 
                         GameObject.Find("Player").GetComponent<character_stats>().persuasion.base_value += 1;
                         GameObject.Find("Snakeoil Salesman").GetComponent<character_stats>().can_manipulate = false;
+
+                        snake_trigger.write_journal("information_snake01");
 
                         if(snake_bubble.activeSelf)
                             snake_bubble.SetActive(false);
@@ -161,6 +167,8 @@ public class dialogue_choice : MonoBehaviour
                         GameObject.Find("Player").GetComponent<character_stats>().persuasion.base_value += 1;
                         GameObject.Find("Snakeoil Salesman").GetComponent<character_stats>().can_manipulate = false;
 
+                        snake_trigger.write_journal("information_snake01");
+
                         if(snake_bubble.activeSelf)
                             snake_bubble.SetActive(false);
                     }
@@ -222,6 +230,8 @@ public class dialogue_choice : MonoBehaviour
 
                         GameObject.Find("Player").GetComponent<character_stats>().persuasion.base_value += 1;
                         GameObject.Find("Snakeoil Salesman").GetComponent<character_stats>().can_manipulate = false;
+
+                        snake_trigger.write_journal("information_snake01");
 
                         if(snake_bubble.activeSelf)
                             snake_bubble.SetActive(false);

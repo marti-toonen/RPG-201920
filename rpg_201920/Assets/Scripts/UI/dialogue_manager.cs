@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class dialogue_manager : MonoBehaviour
 {
+    private journal_trigger young_trigger;
+    public journal_trigger widow_trigger;
+
     private GameObject deputy_bubble;
     private GameObject young_bubble;
     private GameObject highway_bubble;
@@ -48,12 +51,17 @@ public class dialogue_manager : MonoBehaviour
         highway_bubble = GameObject.Find("information_highway01");
 
         player = FindObjectOfType<Player>();
+
+        young_trigger = GameObject.Find("information_young01").GetComponent<journal_trigger>();
     }
 
     void Update() {
         player_persuasion = GameObject.Find("Player").GetComponent<character_stats>().persuasion.base_value;
         player_intimidation = GameObject.Find("Player").GetComponent<character_stats>().intimidation.base_value;
         player_intuition = GameObject.Find("Player").GetComponent<character_stats>().intuition.base_value;
+
+        if(widow_bubble.activeSelf)
+            widow_trigger = GameObject.Find("information_widow01").GetComponent<journal_trigger>();
     }
 
     public void start_dialogue(dialogue_class dialogue) {
@@ -78,14 +86,22 @@ public class dialogue_manager : MonoBehaviour
                     deputy_highway_bubble.SetActive(false);
                     young_highway_bubble.SetActive(true);
                 }
+                else if(deputy_highway_bubble.activeSelf && young_bubble.activeSelf) {
+                    young_bubble.SetActive(false);
+                    young_highway_bubble.SetActive(true);
+                    deputy_highway_bubble.SetActive(false);
+                }
                 else if(deputy_snake_bubble.activeSelf) {
                     deputy_snake_bubble.SetActive(false);
                     widow_snake_bubble.SetActive(true);
                 }
                 break;
             case "The Young Gun":
-                if(young_bubble.activeSelf)
+                if(young_bubble.activeSelf) {
                     young_bubble.SetActive(false);
+                    GameObject.Find("Young Gun").GetComponent<character_stats>().information_gained = true;
+                    young_trigger.write_journal("information_young01");
+                }
                 else if(young_highway_bubble.activeSelf) {
                     if(player_persuasion > player_intimidation && player_persuasion > player_intuition) {
                         GameObject.Find("Player").GetComponent<character_stats>().persuasion.base_value += 3;
@@ -103,6 +119,8 @@ public class dialogue_manager : MonoBehaviour
                         Debug.Log("Oh Ariana, we're really in it now.");
 
                     young_highway_bubble.SetActive(false);
+                    if(deputy_highway_bubble.activeSelf)
+                        deputy_highway_bubble.SetActive(false);
                 }
                 break;
             case "The Highwayman":
@@ -120,6 +138,7 @@ public class dialogue_manager : MonoBehaviour
                 if(widow_bubble.activeSelf) {
                     widow_bubble.SetActive(false);
                     snake_bubble.SetActive(true);
+                    widow_trigger.write_journal("information_widow01");
                 }
                 else if(widow_snake_bubble.activeSelf) {
                     if(player_persuasion > player_intimidation && player_persuasion > player_intuition) {
