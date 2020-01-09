@@ -8,6 +8,8 @@ public class dialogue_manager : MonoBehaviour
     private journal_trigger young_trigger;
     public journal_trigger widow_trigger;
 
+    private information_menu info;
+
     private GameObject deputy_bubble;
     private GameObject young_bubble;
     private GameObject highway_bubble;
@@ -53,6 +55,8 @@ public class dialogue_manager : MonoBehaviour
         player = FindObjectOfType<Player>();
 
         young_trigger = GameObject.Find("information_young01").GetComponent<journal_trigger>();
+
+        info = GameObject.Find("information_menu").GetComponent<information_menu>();
     }
 
     void Update() {
@@ -191,6 +195,12 @@ public class dialogue_manager : MonoBehaviour
             animator_choicebox.SetBool("choicebox_open", true);
             continue_button.interactable = false;
         }
+        else if(sentences.Count == 0 && GameObject.Find("Snakeoil Salesman").GetComponent<character_stats>().information_gained && GameObject.Find("Highwayman").GetComponent<character_stats>().information_gained) {
+            animator_textbox.SetBool("textbox_open", false);
+            player.can_move = true;
+            StartCoroutine(end_game());
+            return;
+        }
         else if(sentences.Count == 0) {
             animator_textbox.SetBool("textbox_open", false);
             player.can_move = true;
@@ -200,5 +210,10 @@ public class dialogue_manager : MonoBehaviour
             string sentence = sentences.Dequeue();
             dialogue_text.text = sentence;
         }
+    }
+
+    IEnumerator end_game() {
+        yield return new WaitForSeconds(3);
+        info.end_screen.SetActive(true);
     }
 }

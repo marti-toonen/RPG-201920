@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class journal_manager : MonoBehaviour
 {
     public Text journal_text;
+
+    public Animator animator;
 
     private List<string> journal_entries;
 
@@ -18,11 +21,15 @@ public class journal_manager : MonoBehaviour
             if(!journal_entries.Contains(journal_entry))
                 journal_entries.Add(journal_entry);
         }
+        StartCoroutine(toggle_update());
+        journal_text.text += journal_entries.Last() + "\n\n";
+    }
 
-        for(int i = 0; i < journal_entries.Count; i++) {
-            journal_text.text = journal_entries[0] + "\n\n";
-            if(journal_entries.Count > 1)
-                journal_text.text += journal_entries[i] + "\n\n";
-        }
+    IEnumerator toggle_update() {
+        animator.SetBool("journal_added", true);
+
+        yield return new WaitForSeconds(3);
+
+        animator.SetBool("journal_added", false);
     }
 }
