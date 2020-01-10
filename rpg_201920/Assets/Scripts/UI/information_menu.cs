@@ -19,16 +19,16 @@ public class information_menu : MonoBehaviour
             player.can_move = false;
         else
             player.can_move = true;
+
+        if(Input.GetKeyDown(KeyCode.Tab))
+            return_game();
     }
 
     public void return_game() {
         if(start_screen.activeSelf)
             start_screen.SetActive(false);
-        else if(end_screen.activeSelf)
+        else if(end_screen.activeSelf) {
             end_screen.SetActive(false);
-    }
-
-    public void quit_game() {
-        Application.Quit();
+        }
     }
 }

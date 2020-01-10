@@ -13,6 +13,14 @@ public class toggle_menu : MonoBehaviour
         player = FindObjectOfType<Player>();
     }
 
+    void Update() {
+        if(Input.GetKeyDown(KeyCode.J))
+            if(animator.GetBool("journal_open"))
+                animator.SetBool("journal_open", false);
+            else
+                animator.SetBool("journal_open", true);
+    }
+
     public void toggle_journal() {
         if(animator.GetBool("journal_open")) {
             animator.SetBool("journal_open", false);

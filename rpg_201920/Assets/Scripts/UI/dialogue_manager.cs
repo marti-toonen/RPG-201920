@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class dialogue_manager : MonoBehaviour
 {
     private journal_trigger young_trigger;
-    public journal_trigger widow_trigger;
+    private journal_trigger widow_trigger;
 
     private information_menu info;
 
